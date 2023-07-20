@@ -1,11 +1,13 @@
 import React from 'react'
+import CommonSection from '../shared/CommonSection'
 
+import "../styles/tour.css";
 const Tours = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+    <CommonSection title={"All Tours"}/>
+    </>
+  );
+};
 
 export default Tours
