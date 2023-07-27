@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Form, FormGroup, Button} from 'reactstrap'
 import { Link } from 'react-router-dom'
 import '../styles/login.css'
-import login from '../assets/images/login.png'
-import userIcon from '../assets/images/user.png'
+import login from '../assets/image/login.jpg'
+import userIcon from '../assets/image/userIcon.jpg'
 
-const Register = () => {
+const register = () => {
 
   const [credentials, setCredentials] = useState({
     username: undefined,
@@ -46,9 +46,9 @@ const Register = () => {
                   <FormGroup>
                     <input type="password" placeholder='password' required id='password' onChange={handleChange} />
                   </FormGroup>
-                  <Button className='btn secondary_btn auth_btn' type='submit'>Creacte Account </Button>
+                  <Button className='btn secondary__btn auth__btn' type='submit'>Creacte Account </Button>
                 </Form>
-                <p>Don't have an account? <Link to='/login'>Login</Link></p>
+                <p>Don't have an account? <Link to='/register'>Login</Link></p>
               </div>
             </div>
           </Col>
@@ -58,4 +58,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default register
