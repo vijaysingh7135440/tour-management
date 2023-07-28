@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Form, FormGroup, Button} from 'reactstrap'
 import { Link } from 'react-router-dom'
 import '../styles/login.css'
-import login from '../assets/image/login.jpg'
-import userIcon from '../assets/image/userIcon.jpg'
+import login from '../assets/images/login.png'
+import userIcon from '../assets/images/user.png'
 
 const Login = () => {
 
@@ -42,7 +42,7 @@ const Login = () => {
                   <FormGroup>
                     <input type="password" placeholder='password' required id='password' onChange={handleChange} />
                   </FormGroup>
-                  <Button className='btn secondary__btn auth__btn' type='submit'>Login</Button>
+                  <Button className='btn secondary_btn auth_btn' type='submit'>Login</Button>
                 </Form>
                 <p>Don't have an account? <Link to='/register'>Create </Link></p>
               </div>
