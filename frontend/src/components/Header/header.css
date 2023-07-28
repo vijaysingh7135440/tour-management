@@ -5,11 +5,10 @@
     display: flex;
 }
 
-.logo img{
+.logo img {
     width: 30%;
-    margin-top: -50px;
+    margin-top: -40px;
 }
-
 .menu{
     margin-bottom: 0;
 }
@@ -48,6 +47,26 @@
     
 }
 
-.nav__btns{
-    align-items: center;
+.nav__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu li {
+  margin-right: 2rem; /* Adjust this value as needed to create the desired distance between links */
+}
+
+.nav__btns {
+  display: flex;
+  align-items: center;
+}
+
+.nav__btns button {
+  margin-right: 2rem; /* Adjust this value as needed to create the desired distance between buttons */
 }

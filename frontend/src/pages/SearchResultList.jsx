@@ -19,8 +19,7 @@ const SearchResultList = () => {
               data.length ===0 ? (<h4 className="text-center">no tour found</h4>) : (
                 data?.map(tour => (
                   <Col lg="3" className='="mb-4' key={tour._id}>
-                    {"/"}
-                    <TourCard tour={tour}/>{"/"}
+                    <TourCard tour={tour}/>
                   </Col>
                 ))
               )
