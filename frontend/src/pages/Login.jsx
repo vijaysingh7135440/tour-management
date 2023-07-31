@@ -14,7 +14,7 @@ const Login = () => {
     password: undefined
   });
 
-  const [dispatch] = useContext(AuthContext)
+  const {dispatch} = useContext(AuthContext)
   const navigate= useNavigate()
 
   const handleChange = e => {
@@ -44,6 +44,7 @@ const Login = () => {
     }
   }
 
+  
 
   return (
     <section>

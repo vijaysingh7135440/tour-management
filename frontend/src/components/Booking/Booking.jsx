@@ -1,17 +1,18 @@
 import React, { useState, useContext } from 'react';
+
 import './booking.css';
 import { Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from "../../context/AuthContext";
-import { BASE_URL } from '../../utils/config';
+import {AuthContext} from "../../context/AuthContext"
+import {BASE_URL} from "../../utils/config"
 const Booking = ({ tour, avgRating }) => {
-  const { price, reviews } = tour;
+  const { price, reviews, title } = tour;
   const navigate = useNavigate();
-  const {user} = useContext(AuthContext)
-
+ const {user} = useContext(AuthContext)
   const [booking, setBooking] = useState({
-    userId: '01',
-    userEmail: 'example@gmail.com',
+    userId: user && user._id,
+    userEmail: user && user.email,
+    tourName:title,
     fullName: '',
     phone: '',
     guestSize: 1,
@@ -26,32 +27,39 @@ const Booking = ({ tour, avgRating }) => {
   const totalAmount = Number(price) * Number(booking.guestSize) + Number(serviceFee);
 
   // send data to the server
-  const handleClick = async (e) => {
+  const handleClick = async e => {
     e.preventDefault();
-    try {
-      if(!user || user==undefined || user==null){
-        return alert('Please sign in')
+console.log(booking);
+try{
+  if(!user || user===undefined || user===null){
+    return alert('please sign in')
+  }
 
-      }
-      const res= await fetch(`${BASE_URL}/review`,{
-        method:'post',
-        headers:{
-          'content-type':'application/json'
-        },
-        credentials:'include',
-        body:JSON.stringify(booking)
-      })
-      const result= await res.json()
-      if(!res.ok){
-        return alert(result.message)
-      }
-      navigate('/thank-you')
-    } catch (err) {
-      alert(err.mesage)
-    }
+  const res = await fetch(`${BASE_URL}/booking`,{
+    method:'post',
+    header:{
+      'content-type':'application/json'
+    },
+    credentials:'include',
+    body:JSON.stringify(booking)
+  })
+const result = await res.json()
+if(!res.ok){
+  return alert(result.message)
+}
+navigate("/thank-you")
+}catch(err){
+
+  alert(err.message)
+
+}
+
+
+
     // Send credentials data to the server here.
     // Assuming there's a function named "sendDataToServer" that handles this.
     //sendDataToServer(credentials);
+    navigate('/thank-you');
   };
 
   return (

@@ -54,7 +54,7 @@ export const deleteTour = async(req, res)=>{
 export const getSingleTour = async(req, res)=>{
     const id = req.params.id
     try {
-        const tour = await Tour.findById(id).populate('reviews')
+        const tour = await Tour.findById(id)
 
         res.status(200).json({
             success:true,
@@ -74,10 +74,7 @@ export const getAllTour = async(req, res)=>{
 
     try {
         
-        const tours = await Tour.find({})
-        .populate('reviews')
-        .skip(page = 8)
-        .limit();
+        const tours = await Tour.find({}).skip(page = 8).limit();
 
         res.status(200).json({
             success:true,
@@ -102,11 +99,7 @@ export const getTourBySearch=async(req,res)=>{
     const maxGroupSize= parseInt(req.query.maxGroupSize)
 
     try {
-        const tours= await Tour.find({
-            city, 
-            distance:{$gte:distance}, 
-            maxGroupSize:{$gte:maxGroupSize}
-        }).populate('reviews')
+        const tours= await Tour.find({city, distance:{$gte:distance}, maxGroupSize:{$gte:maxGroupSize}})
         res.status(200).json({
             success:true,
             message:"complete data fetched",
@@ -126,9 +119,7 @@ export const getFeaturedTour = async(req, res)=>{
 
     try {
         
-        const tours = await Tour.find({featured:true})
-        .populate('reviews')
-        .limit();
+        const tours = await Tour.find({featured:true}).limit();
 
         res.status(200).json({
             success:true,

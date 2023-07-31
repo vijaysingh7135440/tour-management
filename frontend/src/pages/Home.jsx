@@ -26,7 +26,7 @@ const Home = () => {
                <Subtitle subtitle={'Know where you go'} /> 
                 <img src={worldImg} alt="" />
               </div>
-              <h1> Travelling is the best way to spend  <span className='highlight'>Vacation</span></h1>
+              <h1> Travelling is the best way to spend  <span className='highlight'>Vaction</span></h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt culpa, quibusdam quo atque assumenda saepe quaerat voluptas quis ducimus soluta deleniti 
                 sed ipsa quas voluptatem. Necessitatibus, tempora quasi! Amet, nobis?
@@ -40,7 +40,7 @@ const Home = () => {
             </div>
           </Col>
           <Col lg='2'>
-            <div className="hero_img_box mt-4">
+            <div className="hero_img_box hero__video-box mt-4">
               <video src={heroVideo} type="video/mp4" alt="" controls autostart autoPlay  />
             </div>
           </Col>
