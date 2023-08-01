@@ -11,8 +11,8 @@ export const register= async(req, res)=>{
         const newUser= new User({
             username: req.body.username,
             email: req.body.email,
-            password: req.body.password,
-            photo: req.body.photo,
+            password: hash,
+            photo: req.body.photo
         })
         await newUser.save()
 
@@ -34,22 +34,16 @@ export const login= async(req, res)=>{
             return res.status(404).json({success:false,message:'User not found'})
         }
 
-        const checkCorrectPassword= await bcrypt.compare(req.body.password, user.password)
+        const checkCorrectPassword= bcrypt.compare(req.body.password, user.password)
         if(!checkCorrectPassword){
             return res.status(401).json({success:false,message:"Incorrect email or Password"})
         }
         
         const {password, role, ...rest}= user._doc
 
-        const token= jwt.sign({id:user._id, role:user.role}, process.env.JWT_SECRET_KEY,
-            {expiresIn: "10days"})
-
-        res.cookie('accessToken', token,{
-            httpOnly: true,
-            expires:token.expiresIn
-        }).status(200).json({token,success:true, message:'Successfully login', data: {...rest}, role,})
+        const token= jwt.sign({id:user._id, role:user.role}, process.env)
 
     } catch (err) {
-        res.status(500).json({success:false,message:"failed to login"})
+        
     }
 }
