@@ -2,11 +2,6 @@ import React from 'react'
 import TourCard from '../../shared/TourCard'
  
 import {Col} from 'reactstrap'
-<<<<<<< HEAD
-import useFetch from '../../hooks/useFetch';
-import { BASE_URL } from '../../utils/config';
-=======
->>>>>>> eed22c70ab55f7283109791f6dbb427c4ba9801d
 
 import useFetch from "./../../hooks/useFetch";
 import {BASE_URL} from "./../../utils/config"

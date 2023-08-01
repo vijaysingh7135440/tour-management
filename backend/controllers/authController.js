@@ -34,16 +34,21 @@ export const login= async(req, res)=>{
             return res.status(404).json({success:false,message:'User not found'})
         }
 
-        const checkCorrectPassword= bcrypt.compare(req.body.password, user.password)
+        const checkCorrectPassword= await bcrypt.compare(req.body.password, user.password)
         if(!checkCorrectPassword){
             return res.status(401).json({success:false,message:"Incorrect email or Password"})
         }
         
         const {password, role, ...rest}= user._doc
 
-        const token= jwt.sign({id:user._id, role:user.role}, process.env)
+        const token= jwt.sign({id:user._id, role:user.role}, process.env.JWT_SECRET_KEY, {expiresIn: "15d"});
+
+        res.cookie('acceptToken', token, {
+            httpOnly:true,
+            expires:token.expiresIn
+        }).status(200).json({token, data:{...rest}, role,})
 
     } catch (err) {
-        
+        res.status(500).json({success:false,message:"Login Failed"})
     }
 }

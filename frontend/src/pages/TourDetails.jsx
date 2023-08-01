@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-import React, {useEffect, useRef, useState}from 'react'
-// import '../styles/tour-details.css'
-=======
 import React, {useRef, useState, useContext}from 'react'
 import { useEffect } from 'react'
 import '../styles/tour-details.css'
->>>>>>> eed22c70ab55f7283109791f6dbb427c4ba9801d
 import {Container,Row,Col,Form,ListGroup} from 'reactstrap'
 import { useParams } from 'react-router-dom'
 // import tourData from '../assets/data/tours'
@@ -24,13 +19,6 @@ const {user}= useContext(AuthContext)
 // later on api will be called
 
 // const tour = tourData.find(tour=>tour.id === id)
-<<<<<<< HEAD
-
-
-// fetch data from database
-
-=======
->>>>>>> eed22c70ab55f7283109791f6dbb427c4ba9801d
 const { data:tour, loading, error} = useFetch(`${BASE_URL}/tours/${id}`);
 const {photo, title, desc,price,address,reviews,city,distance,maxGroupSize} = tour;
 
@@ -159,21 +147,6 @@ useEffect(()=> {
       <h6>{review.reviewText}</h6>
     </div>
 
-<<<<<<< HEAD
-    <h6>Amazing tour</h6>
-  </div>
-  </div>
-))
-}</ListGroup>
-</div>
-      </div>
-      </Col>
-      <Col lg='4'>
-        <Booking tour={tour} />    
-      </Col>
-    </Row>
-     }
-=======
     </div>
   ))
 }</ListGroup>
@@ -186,10 +159,12 @@ useEffect(()=> {
           <Booking tour={tour} />
         </Col>
       </Row>)}
->>>>>>> eed22c70ab55f7283109791f6dbb427c4ba9801d
     </Container>
-    </section> 
+    </section>
+  
     </>
+
+
   )
 }
 
