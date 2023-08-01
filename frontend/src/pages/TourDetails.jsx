@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState}from 'react'
-import '../styles/tour-details.css'
+// import '../styles/tour-details.css'
 import {Container,Row,Col,Form,ListGroup} from 'reactstrap'
 import { useParams } from 'react-router-dom'
 // import tourData from '../assets/data/tours'
@@ -22,7 +22,7 @@ const [tourRating, setTourRating]=useState(null)
 
 // fetch data from database
 
- const { data:tour, loading, error} = useFetch(`${BASE_URL}/tours/${id}`);
+const { data:tour, loading, error} = useFetch(`${BASE_URL}/tours/${id}`);
 const {photo, title, desc,price,address,reviews,city,distance,maxGroupSize} = tour;
 
 const {totalRating, avgRating} = calculateAvgRating(reviews)
@@ -120,26 +120,20 @@ reviews?.map(review=>(
 
     <h6>Amazing tour</h6>
   </div>
-
   </div>
 ))
 }</ListGroup>
 </div>
-
       </div>
       </Col>
-
       <Col lg='4'>
-        <Booking tour={tour} />
+        <Booking tour={tour} />    
       </Col>
     </Row>
      }
     </Container>
-    </section>
-  
+    </section> 
     </>
-
-
   )
 }
 

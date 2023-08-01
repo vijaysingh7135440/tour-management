@@ -35,7 +35,7 @@ const {data: toursCount} = useFetch(`&{BASE_URL/tours/search/getTourCount}`)
 useEffect(()=>{
   const pages = Math.ceil(toursCount / 8);
   setpageCount(pages);
-  setpageCount(pages);
+  window.scrollTo(0,0);
 },[page, toursCount, tours]);
 
   return (
